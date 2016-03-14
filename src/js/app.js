@@ -91,7 +91,8 @@
             });
 
 
-            this.buttonAdd.addEventListener('click', function(){
+            this.buttonAdd.addEventListener('click', function(evt){
+                evt.preventDefault();
                 view.addShow();
             });
 
