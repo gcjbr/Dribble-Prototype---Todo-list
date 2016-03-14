@@ -1,3 +1,8 @@
-This is the boilerplate I created for my own work. I usually start from here. It is still a work in progress.
+# Dribbble project prototype
+## Todo list
 
-If you wish to use it or suggest any features, please, do.
+This is a study based on the original mockup by [Goutham](https://dribbble.com/shots/2451888-ToDo-List)
+
+
+[See it at Codepen](http://codepen.io/souljacker/pen/mPVyae)
+
