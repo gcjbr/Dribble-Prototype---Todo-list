@@ -108,8 +108,9 @@
             this.addButton.addEventListener('click', function(){
                 controller.addTask(view.addTask.value);
                 view.renderList();
-                view.addTask.value = view.addTask;
                 view.addHide();
+                view.addTask.value = view.addTaskDef;
+
             });
 
 

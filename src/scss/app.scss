@@ -202,6 +202,7 @@ input.list-check[type=checkbox]:checked {
 }
 
 
+
 .add-fields {
   align-items: center;
   display: flex;
@@ -228,7 +229,7 @@ input.list-check[type=checkbox]:checked {
 .add-task {
   color: $c-3;
   font-size: 1em;
-  height: 2rem;
+  line-height: 2rem;
   padding: 1rem;
   width: 80%;
 
