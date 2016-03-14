@@ -10,7 +10,6 @@
 
     // Model
 
-    // Initializing a model with a few tasks
 
     var model = {
         tasks: [
@@ -44,12 +43,21 @@
     var view = {
       init: function () {
           this.list = document.getElementById('list-ul');
-          controller.addTask('teste');
+          this.buttonAdd = document.getElementById('btn-add');
+          this.addBox = document.getElementById('add');
+          this.addTask = document.getElementById('add-task');
+          this.addTaskDef = "Add your task";
+          this.addTask.value = this.addTaskDef;
+          this.addButton = document.getElementById('add-button');
+
+
           this.renderList();
+          this.bindEvents();
+
 
       },
       renderList: function () {
-
+          this.list.innerHTML = '';
 
           for (var i = controller.getTasks().length - 1; i >=0; i--){
 
@@ -60,10 +68,51 @@
         generateLi: function (task) {
             var newLi = document.createElement('li');
             newLi.setAttribute('class', 'list-li');
-            var liHtml = '<input type="checkbox" class="list-check" id="'+ task.id + '" /> <label class="list-txt" for="'+ task.id +'">' + task.task +' <span class="list-tick">X</span> </label>';
-            newLi.innerHTML = liHtml;
+            newLi.innerHTML =  '<input type="checkbox" class="list-check" id="'+ task.id + '" /> <label class="list-txt" for="'+ task.id +'">' + task.task +' <span class="list-tick">X</span> </label>';
 
             return newLi;
+
+        },
+        addShow: function(){
+            this.addBox.className = 'add-show';
+        },
+        addHide: function(){
+            this.addBox.className = 'add-hide';
+        },
+
+        bindEvents: function () {
+
+            document.addEventListener('click', function (event) {
+
+                if (event.target === document.body){
+                    view.addHide();
+                }
+
+            });
+
+
+            this.buttonAdd.addEventListener('click', function(){
+                view.addShow();
+            });
+
+            this.addTask.addEventListener('focus', function () {
+                view.addTask.value = '';
+            });
+
+            this.addTask.addEventListener('blur', function () {
+                if (view.addTask.value === ''){
+                    view.addTask.value = view.addTaskDef;
+                }
+            });
+
+            this.addButton.addEventListener('click', function(){
+                controller.addTask(view.addTask.value);
+                view.renderList();
+                view.addTask.value = view.addTask;
+                view.addHide();
+            });
+
+
 
         }
     };
@@ -71,44 +120,3 @@
     controller.init();
 
 }());
-
-/*
-
-
-$(function() {
-
-    // vars
-
-    $list = $('#list-ul');
-    $newLi = "<li class='list-li'><input type='checkbox' class='list-check' id='item3' /><label class='list-txt' for='item3'>Finish this list<span class='list-tick'>X</span></label></li>";
-    $buttonAdd = $('.button-add');
-    $add = $('.add');
-
-    // bindings
-
-
-    $buttonAdd.on("click", function(e){
-        e.preventDefault();
-        e.stopPropagation();
-
-        $add.slideToggle();
-
-
-    });
-
-
-    $(document).click(function(){
-        $add.slideUp();
-    });
-
-
-    $add.click(function(e){
-        e.stopPropagation();
-    });
-
-    // set initial states
-
-
-
-
-});*/

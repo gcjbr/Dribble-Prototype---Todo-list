@@ -21,6 +21,14 @@ body {
 
 }
 
+a {
+  color: $c-6;
+
+  &:hover {
+    color: $c-5;
+  }
+}
+
 .card {
   background-color: $c-2;
   box-shadow: 5px 5px 6px -4px rgba(207,211,218,0.35);
@@ -30,6 +38,14 @@ body {
   min-width: 300px;
   padding: 2rem;
   position: relative;
+  width: 50%;
+
+}
+
+.credits {
+
+  margin: auto;
+  margin-top: $button-size;
   width: 50%;
 
 }
@@ -167,18 +183,24 @@ input.list-check[type=checkbox]:checked {
 
 }
 
-.add {
+#add {
 
   background-color: $c-5;
   bottom: 0;
+  display: flex;
   height: 80%;
   left: 0;
-  opacity: 0.8;
   position: absolute;
+  transition: visibility 0.5s, opacity 0.5s linear, height 0.5s;
+
   width: 100%;
   z-index: 10;
-  display: none;
 }
+
+#add .add-fields {
+  transition: visibility 0s;
+}
+
 
 .add-fields {
   align-items: center;
@@ -211,4 +233,17 @@ input.list-check[type=checkbox]:checked {
   width: 80%;
 
 
+}
+
+#add.add-hide {
+  opacity: 0;
+  visibility: hidden;
+  height: 0%;
+
+}
+
+#add.add-show {
+  opacity: 0.8;
+  visibility: visible;
+  height: 80%;
 }
